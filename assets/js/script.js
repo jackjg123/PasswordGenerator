@@ -53,11 +53,39 @@ function getPasswordOptions() {
 
     if (!options) return null;
 
+    var lowercaseCharacters = "abcdefghijklmnopqrstuvwxyz";
+    var uppercaseCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var numberCharacters = "0123456789";
+    var specialCharacters = "!@#$%^&*()_+-=[]{}|:;\"<>,.?/~"
+
     if (options.hasSpecialCharacters) {
       possibleCharacters = possibleCharacters.concat(specialCharacters);
       guaranteedCharacters.push(getRandom(specialCharacters));
     }
-    return result.join('');
+    if (options.hasUppercaseCharacters) {
+      possibleCharacters = possibleCharacters.concat(uppercaseCharacters);
+      guaranteedCharacters.push(getRandom(uppercaseCharacters));
+    }
+    if (options.hasLowercaseCharacters) {
+      possibleCharacters = possibleCharacters.concat(lowercaseCharacters);
+      guaranteedCharacters.push(getRandom(lowercaseCharacters));
+    }
+    if (options.hasNumbers) {
+      possibleCharacters = possibleCharacters.concat(numberCharacters);
+      guaranteedCharacters.push(getRandom(numberCharacters)); 
+    }
+
+    for (var i = 0; i < options.length - guaranteedCharacters.length; i++) {
+      var possibleCharacter = getRandom(possibleCharacters);
+      result.push(possibleCharacter);
+    }
+  
+    result = result.concat(guaranteedCharacters.split("")).sort(function () {
+      return 0.5 - Math.random();
+    });
+    
+      return result.join('');
+      
   }
   
   function writePassword() {
