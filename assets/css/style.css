@@ -1,6 +1,5 @@
-*,
-*::before,
-*::after {
+*
+{
   box-sizing: border-box;
 }
 
@@ -11,75 +10,54 @@ body,
   margin: 0;
   padding: 0;
 }
-
+/* sets the font and background color to the background */
 body {
   font-family: sans-serif;
-  background-color: #1d2434;
+  background-color: #1F5C79;
 }
-
+/* gives padding to the .wrapper container with the header inside of it */
 .wrapper {
   padding-top: 30px;
   padding-left: 20px;
   padding-right: 20px;
 }
-
+/* centers, adds color to the text and background,adds rounded corners, and adds a shadow.*/
 header {
   text-align: center;
   padding: 20px;
-  padding-top: 0px;
-  color: white;
-  text-shadow: 3px 3px 3px#181719;
+  color: #D7DEE8;
+  background-color: #2B2B2B;
+  border-radius: 20px;
+  margin-bottom: 50px;
+  box-shadow: rgba(0, 0, 0, 0.15) 5px 5px 0px 5px;
 }
-
+/* adds text, background, border styling. */
 .card {
-  background-color: #181719;
-  border-radius: 60px;
-  border-width: 1px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
-  color: white;
-  font-size: 18px;
+  background-color: #BFAB0C;
+  border-radius: 150px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: #767D83;
+  box-shadow: rgba(0, 0, 0, 0.15) 10px 10px 5px 10px;
+  color: #2B2B2B 20px;
+  text-align: center;
   margin: 0 auto;
   max-width: 800px;
   padding: 30px 40px;
 }
-
-.card-header::after {
-  content: " ";
-  display: block;
-  width: 100%;
-  background: #e7e9eb;
-  height: 2px;
-}
-
+/* constrains height of card body to 100 px */
 .card-body {
   min-height: 100px;
 }
-
-.card-footer {
-  text-align: center;
-}
-
-.card-footer::before {
-  content: " ";
-  display: block;
-  width: 100%;
-  background: #e7e9eb;
-  height: 2px;
-}
-
-.card-footer::after {
-  content: " ";
-  display: block;
-  clear: both;
-}
+/* aligns card-footer text */
 
 .btn {
   border: none;
-  background-color: #f1b950;
+  background-color: #2B2B2B;
   border-radius: 25px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
     0px;
-  color: #44496f;
+  color: #D7DEE8;
   display: inline-block;
   font-size: 22px;
   line-height: 22px;
@@ -114,9 +92,10 @@ button[disabled] {
   margin-top: 10px;
   margin-bottom: 10px;
   border: 2px dashed #c0c7cf;
-  border-radius: 6px;
+  border-radius: 40px;
   resize: none;
   overflow: hidden;
+  background-color: #2B2B2B
 }
 
 @media (max-width: 690px) {
