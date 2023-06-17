@@ -24,16 +24,16 @@ function getPasswordCriteria(){
     return null;
   }
   // sets the value of the variable to get the user's chosen password criteria.
-  var specialCharacters = confirm("Click ok to include special characters");
-  var upperCaseCharacters = confirm("Click ok to include upper case characters");
-  var lowerCaseCharacters = confirm("Click ok to include lower case characters");
+  var hasSpecialCharacters = confirm("Click ok to include special characters");
+  var hasUpperCaseCharacters = confirm("Click ok to include upper case characters");
+  var hasLowerCaseCharacters = confirm("Click ok to include lower case characters");
   var hasNumbers = confirm("Click ok to include numbers");
   // set the variables to be the properties of the passwordCriteria.
   var passwordCriteria = {
     length: length,
-    specialCharacters: specialCharacters,
-    upperCaseCharacters: upperCaseCharacters,
-    lowerCaseCharacters: lowerCaseCharacters,
+    hasSpecialCharacters: hasSpecialCharacters,
+    hasUpperCaseCharacters: hasUpperCaseCharacters,
+    hasLowerCaseCharacters: owerCaseCharacters,
     hasNumbers: hasNumbers,
   };
   return passwordCriteria;
@@ -41,7 +41,7 @@ function getPasswordCriteria(){
 
 generateBtn.addEventListener("click", getPasswordCriteria)
 
-function randomCharacter (arr) {
+function randomCharacters (arr) {
   //Math.random() function calculates a random number between 0 and 1, and it is multiplied by the number given by the array length. The Math.floor() function then rounds that value down to the nearest integer.
   var randomIndex = Math.floor(Math.random() * arr.length);
   // allows the selection of a random element from an array based one the randomly generated index value
@@ -50,4 +50,46 @@ function randomCharacter (arr) {
   return randomElement;
 }
 
+function getPassword() {
 
+  var options = getPasswordCriteria();
+  var results = [];
+  var possibleCharacters = [];
+  var guaranteedCharacters = [];
+
+  if (!options) return null;
+  //all possible characters are set in a string. note the \\ allows a single backslash in the string
+  var specialCharacters = '!@#$%^&*()_+-=[]{}|:;\\"<>,.?/~';
+  console.log(specialCharacters);
+  var upperCaseCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  console.log(upperCaseCharacters);
+  var lowerCaseCharacters = 'abcdefghijklmnopqrstuvwxyz';
+  console.log(lowerCaseCharacters);
+  var numberCharacters = '0123456789';
+  console.log(numberCharacters);
+
+  if (options.hasSpecialCharacters) {
+    //combines possibleCharacters array with specialCharacters string.
+    possibleCharacters = possibleCharacters.concat(specialCharacters);
+    //inside the push method the the specialCharacters array runs through the randomCharacters function.
+    //the push method pushes the result to the end of the array, changes the length, and returns new length.
+    guaranteedCharacters = push(randomCharacters(specialCharacters));
+  }
+
+  if (options.hasUpperCaseCharacters) {
+    possibleCharacters = possibleCharacters.concat(upperCaseCharacters);
+    guaranteedCharacters = push(randomCharacters(upperCaseCharacters));
+  }
+
+  if (options.hasLowerCaseCharacters) {
+    possibleCharacters = possibleCharacters.concat(lowerCaseCharacters);
+    guaranteedCharacters = push(randomCharacters(lowerCaseCharacters));
+  }
+
+  if (options.hasNumbers) {
+    possibleCharacters = possibleCharacters.concat(numberCharacters);
+    guaranteedCharacters = push(randomCharacters(numberCharacters));
+  }
+
+
+}
