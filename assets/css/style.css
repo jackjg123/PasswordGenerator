@@ -107,6 +107,7 @@ button[disabled] {
 
   #password {
     font-size: 1rem;
+    color: white;
   }
 }
 
